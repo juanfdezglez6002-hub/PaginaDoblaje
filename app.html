@@ -1,38 +1,41 @@
-<header class="studio-header">
-    <div class="logo">🎙️ DubberWeb Studio</div>
-    <div class="top-tools">
-        <input type="file" id="videoInput" accept="video/*" style="color: white;">
-        <button id="exportBtn" class="btn-primary">💾 Exportar Mix</button>
-    </div>
-</header>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estudio - DubberWeb</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="studio-body">
+    <header class="studio-header">
+        <div class="logo">🎙️ DubberWeb Studio</div>
+        <input type="file" id="videoInput" accept="video/*">
+    </header>
 
-<main class="workspace">
-    <section class="video-panel">
-        <video id="mainVideo" controls playsinline>
-            Tu navegador no soporta vídeo.
-        </video>
-    </section>
+    <main class="workspace">
+        <section class="video-panel">
+            <video id="mainVideo" controls></video>
+        </section>
 
-    <section class="timeline-panel">
-        <div class="toolbar">
-            <div class="recording-tools">
+        <section class="timeline-panel">
+            <div class="toolbar">
                 <button id="recordBtn" class="btn-record">🔴 Grabar</button>
                 <button id="stopBtn" class="btn-stop" disabled>⏹️ Parar</button>
+                <input type="range" id="zoomSlider" min="1" max="3" step="0.1" value="1">
+                <span>Zoom</span>
             </div>
-            <div class="editing-tools">
-                <input type="range" id="zoomSlider" min="1" max="5" step="0.1" value="1">
-                <label>Zoom</label>
-            </div>
-        </div>
 
-        <div id="tracks-area">
-            <div class="track-lane">
-                <div class="track-controls">
-                    <span>Voz 1</span>
-                    <button class="btn-mute">Mute</button>
+            <div id="tracks-area">
+                <div class="track-lane">
+                    <div class="track-controls">
+                        <span>Pista 1</span>
+                        <button class="btn-mute" id="muteVideoBtn">Mute Video</button>
+                    </div>
+                    <div class="track-content" id="trackContent1">
+                        </div>
                 </div>
-                <div class="track-content" id="trackContent1"></div>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
