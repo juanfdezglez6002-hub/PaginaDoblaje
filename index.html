@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DubberWeb - Practica tu Doblaje</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🎙️ DubberWeb Studio</h1>
+        <input type="file" id="videoInput" accept="video/*">
+    </header>
+
+    <main>
+        <section id="video-container">
+            <video id="mainVideo" controls></video>
+        </section>
+
+        <section id="timeline">
+            <div class="controls">
+                <button id="recordBtn">🔴 Grabar</button>
+                <button id="stopBtn" disabled>⏹️ Parar</button>
+                <button id="exportBtn">💾 Exportar Mix</button>
+            </div>
+            <div id="tracks-area">
+                <div class="track-lane" id="track1">
+                    <span class="track-label">Audio Original</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
