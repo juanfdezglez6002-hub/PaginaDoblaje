@@ -70,3 +70,39 @@ button:hover { opacity: 0.8; }
 .btn-mute { background: #444; color: white; flex: 1; }
 .btn-solo { background: #444; color: #ffeb3b; flex: 1; }
 .track-content { flex: 1; position: relative; background: #1a1a1a; border-radius: 0 8px 8px 0; overflow: hidden; }
+
+/* Corrección para que el vídeo ocupe su lugar */
+#mainVideo {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block; /* Evita espacios fantasma */
+    background: #000;
+}
+
+/* El contenedor del clip DEBE tener position: relative */
+.track-content {
+    flex: 1;
+    position: relative; 
+    background: #1a1a1a;
+    height: 100%;
+    overflow: hidden;
+    min-width: 1000px; /* Para que el scroll funcione con zoom */
+}
+
+/* Estilo del clip de audio grabado */
+.audio-clip {
+    height: 80%;
+    top: 10%;
+    background: #bb86fc;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+}
