@@ -3,21 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DubberWeb - Tu Estudio de Doblaje Gratuito</title>
+    <title>DubberWeb - Practica tu Doblaje</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="landing-body">
-    <div class="hero-container fade-in">
-        <h1 class="gradient-text">Dale voz a tu imaginación</h1>
-        <p class="subtitle">La alternativa gratuita, rápida y sin instalaciones para fandubbers y actores de doblaje. Todo desde tu navegador.</p>
-        
-        <div class="features-grid">
-            <div class="feature-card">✂️ Cortes Precisos</div>
-            <div class="feature-card">🎚️ Multipista Libre</div>
-            <div class="feature-card">🔒 100% Privado</div>
-        </div>
+<body>
+    <header>
+        <h1>🎙️ DubberWeb Studio</h1>
+        <input type="file" id="videoInput" accept="video/*">
+    </header>
 
-        <a href="app.html" class="cta-button pulse-anim">🎙️ Empieza a doblar</a>
-    </div>
+    <main>
+        <section id="video-container">
+            <video id="mainVideo" controls></video>
+        </section>
+
+        <section id="timeline">
+            <div class="controls">
+                <button id="recordBtn">🔴 Grabar</button>
+                <button id="stopBtn" disabled>⏹️ Parar</button>
+                <button id="exportBtn">💾 Exportar Mix</button>
+            </div>
+            <div id="tracks-area">
+                <div class="track-lane" id="track1">
+                    <span class="track-label">Audio Original</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
