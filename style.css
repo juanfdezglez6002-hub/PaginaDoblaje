@@ -18,7 +18,6 @@
     min-height: 100vh;
     text-align: center;
     padding: 20px;
-    overflow: hidden; /* Evita scrolls raros durante las animaciones */
 }
 
 .hero-container {
@@ -34,18 +33,15 @@
     align-items: center;
     max-width: 900px;
     width: 100%;
-    animation: fadeInUp 1.2s ease-out; /* Animación de entrada */
 }
 
 .gradient-text {
     font-size: clamp(2.5rem, 8vw, 4rem);
-    background: linear-gradient(90deg, var(--accent), #ff79c6, var(--accent));
-    background-size: 200% auto;
+    background: linear-gradient(45deg, var(--accent), #ff79c6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
     font-weight: 800;
-    animation: shine 3s linear infinite; /* Animación de brillo */
 }
 
 .subtitle { 
@@ -55,9 +51,7 @@
     max-width: 600px; 
     line-height: 1.6;
     margin-left: auto; 
-    margin-right: auto;
-    opacity: 0;
-    animation: fadeInUp 1s ease-out 0.4s forwards; /* Entrada con retraso */
+    margin-right: auto; 
 }
 
 .features-grid { 
@@ -74,47 +68,20 @@
     border-radius: 12px; 
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255,255,255,0.1);
-    transition: transform 0.3s ease;
-    animation: float 4s ease-in-out infinite; /* Animación de flotado */
 }
 
-/* Retraso individual para que no floten todas a la vez */
-.feature-card:nth-child(2) { animation-delay: 0.5s; }
-.feature-card:nth-child(3) { animation-delay: 1s; }
+/* Animaciones */
+.fade-in { animation: fadeIn 1.5s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-.feature-card:hover {
-    transform: translateY(-10px);
-    background: rgba(255,255,255,0.1);
-}
-
-/* === KEYFRAMES (ANIMACIONES) === */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-@keyframes shine {
-    to { background-position: 200% center; }
-}
-
+.pulse-anim { animation: pulse 2s infinite; }
 @keyframes pulse { 
     0% { box-shadow: 0 0 0 0 rgba(187, 134, 252, 0.4); } 
     70% { box-shadow: 0 0 0 15px rgba(187, 134, 252, 0); } 
     100% { box-shadow: 0 0 0 0 rgba(187, 134, 252, 0); } 
 }
 
-/* Botón CTA con pulso */
+/* Botón CTA */
 .cta-button {
     background: var(--accent); 
     color: #000; 
@@ -125,15 +92,13 @@
     border-radius: 50px; 
     transition: transform 0.2s, background 0.3s;
     display: inline-block;
-    animation: pulse 2s infinite;
 }
-
 .cta-button:hover { 
     transform: scale(1.05); 
     background: #d1b2ff;
 }
 
-/* === ESTUDIO DE DOBLAJE === (Sin cambios) */
+/* === ESTUDIO DE DOBLAJE === */
 .studio-body { 
     background-color: var(--bg-dark); 
     color: var(--text); 
@@ -158,6 +123,7 @@
     overflow: hidden; 
 }
 
+/* === VÍDEO (TAMAÑO CORREGIDO) === */
 .video-panel { 
     flex: 0.5; 
     display: flex; 
@@ -170,7 +136,7 @@
 
 video { 
     width: 100%;
-    max-width: 800px;
+    max-width: 800px; /* Tamaño controlado: ni muy grande ni muy pequeño */
     height: auto;
     aspect-ratio: 16 / 9;
     border-radius: 8px; 
@@ -178,6 +144,7 @@ video {
     background: #000;
 }
 
+/* Timeline y Pistas */
 .timeline-panel { 
     flex: 0.5; 
     display: flex; 
@@ -209,6 +176,7 @@ button:hover { opacity: 0.8; }
 .btn-primary { background: var(--accent); color: black; }
 .btn-tool { background: #333; color: white; margin-right: 5px; }
 
+/* Diseño de pista */
 #tracks-area { 
     flex: 1; 
     overflow-y: auto; 
@@ -235,6 +203,11 @@ button:hover { opacity: 0.8; }
     flex-direction: column; 
     gap: 8px; 
 }
+
+.track-buttons { display: flex; gap: 5px; }
+
+.btn-mute { background: #444; color: white; flex: 1; }
+.btn-solo { background: #444; color: #ffeb3b; flex: 1; }
 
 .track-content { 
     flex: 1; 
