@@ -8,7 +8,10 @@
 <body class="studio-body">
     <header class="studio-header">
         <div class="logo">🎙️ DubberWeb Studio</div>
-        <input type="file" id="videoInput" accept="video/*">
+        <div class="top-tools">
+            <input type="file" id="videoInput" accept="video/*" class="file-input">
+            <button id="exportBtn" class="btn-primary">💾 Exportar Proyecto</button>
+        </div>
     </header>
 
     <main class="workspace">
@@ -18,19 +21,28 @@
 
         <section class="timeline-panel">
             <div class="toolbar">
-                <button id="recordBtn" class="btn-record">🔴 Grabar</button>
-                <button id="stopBtn" class="btn-stop" disabled>⏹️ Parar</button>
-                <input type="range" id="zoomSlider" min="1" max="3" step="0.1" value="1">
-                <span>Zoom</span>
+                <div class="recording-tools">
+                    <button id="recordBtn" class="btn-record">🔴 Grabar (R)</button>
+                    <button id="stopBtn" class="btn-stop" disabled>⏹️ Parar</button>
+                </div>
+                <div class="editing-tools">
+                    <button id="splitBtn" class="btn-tool">✂️ Cortar clip (S)</button>
+                    <button id="delBtn" class="btn-tool">🗑️ Borrar (Supr)</button>
+                    <input type="range" id="zoomSlider" min="1" max="10" value="1" title="Zoom del Timeline">
+                </div>
             </div>
 
             <div id="tracks-area">
                 <div class="track-lane">
                     <div class="track-controls">
-                        <span>Pista 1</span>
-                        <button class="btn-mute" id="muteVideoBtn">Mute Video</button>
+                        <span class="track-name">Voz Principal</span>
+                        <div class="track-buttons">
+                            <button class="btn-mute" title="Silenciar">M</button>
+                            <button class="btn-solo" title="Solo">S</button>
+                        </div>
+                        <input type="range" class="vol-slider" min="0" max="100" value="80">
                     </div>
-                    <div class="track-content" id="trackContent1">
+                    <div class="track-content">
                         </div>
                 </div>
             </div>
