@@ -18,9 +18,9 @@
     min-height: 100vh;
     text-align: center;
     padding: 20px;
+    overflow: hidden; /* Evita scrolls raros durante las animaciones */
 }
 
-/* Nuevo contenedor para asegurar el eje central */
 .hero-container {
     display: flex;
     justify-content: center;
@@ -34,15 +34,18 @@
     align-items: center;
     max-width: 900px;
     width: 100%;
+    animation: fadeInUp 1.2s ease-out; /* Animación de entrada */
 }
 
 .gradient-text {
     font-size: clamp(2.5rem, 8vw, 4rem);
-    background: linear-gradient(45deg, var(--accent), #ff79c6);
+    background: linear-gradient(90deg, var(--accent), #ff79c6, var(--accent));
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
     font-weight: 800;
+    animation: shine 3s linear infinite; /* Animación de brillo */
 }
 
 .subtitle { 
@@ -52,7 +55,9 @@
     max-width: 600px; 
     line-height: 1.6;
     margin-left: auto; 
-    margin-right: auto; 
+    margin-right: auto;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.4s forwards; /* Entrada con retraso */
 }
 
 .features-grid { 
@@ -69,20 +74,47 @@
     border-radius: 12px; 
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.3s ease;
+    animation: float 4s ease-in-out infinite; /* Animación de flotado */
 }
 
-/* Animaciones */
-.fade-in { animation: fadeIn 1.5s ease-out; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+/* Retraso individual para que no floten todas a la vez */
+.feature-card:nth-child(2) { animation-delay: 0.5s; }
+.feature-card:nth-child(3) { animation-delay: 1s; }
 
-.pulse-anim { animation: pulse 2s infinite; }
+.feature-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255,255,255,0.1);
+}
+
+/* === KEYFRAMES (ANIMACIONES) === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes shine {
+    to { background-position: 200% center; }
+}
+
 @keyframes pulse { 
     0% { box-shadow: 0 0 0 0 rgba(187, 134, 252, 0.4); } 
     70% { box-shadow: 0 0 0 15px rgba(187, 134, 252, 0); } 
     100% { box-shadow: 0 0 0 0 rgba(187, 134, 252, 0); } 
 }
 
-/* Botón CTA */
+/* Botón CTA con pulso */
 .cta-button {
     background: var(--accent); 
     color: #000; 
@@ -93,13 +125,15 @@
     border-radius: 50px; 
     transition: transform 0.2s, background 0.3s;
     display: inline-block;
+    animation: pulse 2s infinite;
 }
+
 .cta-button:hover { 
     transform: scale(1.05); 
     background: #d1b2ff;
 }
 
-/* === ESTUDIO DE DOBLAJE === */
+/* === ESTUDIO DE DOBLAJE === (Sin cambios) */
 .studio-body { 
     background-color: var(--bg-dark); 
     color: var(--text); 
@@ -124,25 +158,28 @@
     overflow: hidden; 
 }
 
-/* Vídeo */
 .video-panel { 
-    flex: 0.4; 
+    flex: 0.5; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
     background: #000; 
     border-bottom: 2px solid #333; 
+    padding: 20px;
 }
 
 video { 
-    max-height: 100%; 
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    aspect-ratio: 16 / 9;
     border-radius: 8px; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8); 
+    background: #000;
 }
 
-/* Timeline y Pistas */
 .timeline-panel { 
-    flex: 0.6; 
+    flex: 0.5; 
     display: flex; 
     flex-direction: column; 
     background: var(--panel-bg); 
@@ -172,7 +209,6 @@ button:hover { opacity: 0.8; }
 .btn-primary { background: var(--accent); color: black; }
 .btn-tool { background: #333; color: white; margin-right: 5px; }
 
-/* Diseño de pista */
 #tracks-area { 
     flex: 1; 
     overflow-y: auto; 
@@ -199,11 +235,6 @@ button:hover { opacity: 0.8; }
     flex-direction: column; 
     gap: 8px; 
 }
-
-.track-buttons { display: flex; gap: 5px; }
-
-.btn-mute { background: #444; color: white; flex: 1; }
-.btn-solo { background: #444; color: #ffeb3b; flex: 1; }
 
 .track-content { 
     flex: 1; 
