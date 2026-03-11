@@ -1,35 +1,30 @@
-/* Corrección para que el vídeo ocupe su lugar */
-#mainVideo {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    display: block; /* Evita espacios fantasma */
-    background: #000;
-}
+:root { --bg: #121212; --accent: #bb86fc; }
+body { background: var(--bg); color: white; margin: 0; font-family: sans-serif; }
+.studio-header { background: #000; padding: 10px; display: flex; justify-content: space-between; }
+.video-panel { background: #000; text-align: center; padding: 10px; }
+video { max-height: 300px; width: auto; }
 
-/* El contenedor del clip DEBE tener position: relative */
-.track-content {
-    flex: 1;
+.timeline-panel { background: #1e1e1e; padding: 10px; }
+.track-lane { display: flex; background: #2a2a2a; margin-top: 10px; height: 100px; border: 1px solid #444; }
+.track-controls { width: 120px; background: #222; padding: 10px; display: flex; flex-direction: column; gap: 5px; }
+
+/* ESTO ES LO QUE HACE QUE LOS CLIPS SE QUEDEN DENTRO */
+.track-content { 
+    flex: 1; 
     position: relative; 
-    background: #1a1a1a;
-    height: 100%;
-    overflow: hidden;
-    min-width: 1000px; /* Para que el scroll funcione con zoom */
+    overflow-x: auto; 
+    background: #111; 
 }
 
-/* Estilo del clip de audio grabado */
 .audio-clip {
-    height: 80%;
-    top: 10%;
-    background: #bb86fc;
-    border: 1px solid #fff;
-    border-radius: 4px;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    height: 70px;
+    top: 15px;
+    background: var(--accent);
     color: black;
-    font-size: 10px;
-    overflow: hidden;
-    white-space: nowrap;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: grab;
+    user-select: none;
+    border: 1px solid white;
 }
